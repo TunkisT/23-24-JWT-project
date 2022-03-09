@@ -21,7 +21,7 @@ async function getUserFromDb(email) {
     const connection = await mysql.createConnection(dbConfig);
     const sql = `SELECT * FROM users WHERE email = ?`;
 
-    const {userFoundResult} = await connection.execute(sql, [email]);
+    const [userFoundResult] = await connection.execute(sql, [email]);
     await connection.close();
     return userFoundResult;
   } catch (error) {
