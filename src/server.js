@@ -14,12 +14,8 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello express');
-});
+const authRoutes = require('./routes/authRoutes');
 
-const sampleRoutes = require('./routes/authRoutes');
-
-app.use('/sample', sampleRoutes);
+app.use('/', authRoutes);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
