@@ -4,7 +4,7 @@ const dbConfig = require('../dbConfig');
 async function addUserToDb(email, passHash) {
   try {
     const connection = await mysql.createConnection(dbConfig);
-    const sql = `INSERT INTO users (email , password) VALUES (?, ?)`;
+    const sql = 'INSERT INTO users (email , password) VALUES (?, ?)';
 
     const { result } = await connection.execute(sql, [email, passHash]);
     await connection.close();
@@ -18,7 +18,7 @@ async function addUserToDb(email, passHash) {
 async function getUserFromDb(email) {
   try {
     const connection = await mysql.createConnection(dbConfig);
-    const sql = `SELECT * FROM users WHERE email = ?`;
+    const sql = 'SELECT * FROM users WHERE email = ?';
 
     const [userFoundResult] = await connection.execute(sql, [email]);
     await connection.close();
@@ -32,7 +32,7 @@ async function getUserFromDb(email) {
 async function getAllArticlesFromDb() {
   try {
     const connection = await mysql.createConnection(dbConfig);
-    const sql = `SELECT * FROM article`;
+    const sql = 'SELECT * FROM article';
     const [result] = await connection.query(sql);
     await connection.close();
     return result;
