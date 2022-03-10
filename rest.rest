@@ -1,7 +1,8 @@
 GET http://localhost:3000/articles
 ###
 GET http://localhost:3000/articles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY5MTU0MTgsImV4cCI6MTY0NjkxOTAxOH0.u7xTBjYWI5j39945NRWEgF7ZOvSDCYGRQFQ4Y4dAoSM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY5MTg5NzgsImV4cCI6MTY0NjkyMjU3OH0.qEfp1UKQHkWTlE2h0UhmZ-5CRpeuFuXXeP_ENSyjk3
+
 
 ###
 POST http://localhost:3000/register

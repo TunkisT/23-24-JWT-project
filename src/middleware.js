@@ -34,14 +34,12 @@ async function validateUser(req, res, next) {
 function validateToken(req, res, next) {
   const authHeaders = req.headers.authorization;
   const tokenGotFromUser = authHeaders && authHeaders.split(' ')[1];
-  console.log('tokenGotFromUser ===', tokenGotFromUser);
 
   if (!tokenGotFromUser) return res.status(401).json('token not found');
 
   const verifyResult = verifyJwtToken(tokenGotFromUser);
 
-  if (verifyResult === false) return failResponce(res, 'invalid token');
-  console.log('verifyResult ===', verifyResult);
+  if (verifyResult === false) return  failResponce(res, 'invalid token');
   next();
 }
 
