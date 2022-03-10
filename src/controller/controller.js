@@ -55,28 +55,8 @@ async function findAllArticles(req, res) {
   res.json(allArticles);
 }
 
-async function validateUser(req, res) {
-  const authHeaders = req.headers.authorization;
-  res.json(authHeaders);
-
-  const tokenGotFromUser = authHeaders && authHeaders.split(' ')[1];
-  console.log('tokenGotFromUser ===', tokenGotFromUser);
-
-  if (!tokenGotFromUser) return res.status(401).json('token not found');
-
-  jwt.verify(tokenGotFromUser, jwtSecret, (err, verifiedJwt) => {
-    if (err) {
-      res.send(err.message);
-    } else {
-      res.send(verifiedJwt);
-    }
-    // next();
-  });
-}
-
 module.exports = {
   authController,
   loginController,
   findAllArticles,
-  validateUser,
 };

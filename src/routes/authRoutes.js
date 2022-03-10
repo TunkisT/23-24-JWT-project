@@ -3,14 +3,13 @@ const {
   authController,
   loginController,
   findAllArticles,
-  validateUser,
 } = require('../controller/controller');
+const { validateUser, validateToken } = require('../middleware');
 
 const authRoutes = express.Router();
 
 authRoutes.post('/register', authController);
-authRoutes.post('/login', loginController);
-authRoutes.get('/articles', findAllArticles);
-authRoutes.post('/validate', validateUser);
+authRoutes.post('/login', validateUser, loginController);
+authRoutes.get('/articles', validateToken, findAllArticles);
 
 module.exports = authRoutes;

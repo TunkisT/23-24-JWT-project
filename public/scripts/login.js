@@ -17,7 +17,6 @@ if (query) {
 }
 
 async function loginUser(loginData) {
-  console.log('loginData ===', loginData);
   const resp = await fetch('http://localhost:3000/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -28,11 +27,14 @@ async function loginUser(loginData) {
   console.log('respInJs ===', respInJs);
 
   if (respInJs.success === false) {
-    errorDiv.innerHTML = respInJs.error;
+    respInJs.error.map((err) => {
+      console.log(err.message);
+      errorDiv.innerHTML = err.message;
+    });
   }
 
   if (respInJs.success === true) {
-    localStorage.setItem('login_token', respInJs.data)
+    localStorage.setItem('login_token', respInJs.data);
     alert('YOU LOGGED IN');
     window.location.replace(`index.html`);
   }
