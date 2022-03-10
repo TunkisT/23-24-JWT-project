@@ -27,7 +27,6 @@ async function registerUser(registrationData) {
 
   if (respInJs.success === true) {
     alert(respInJs.data);
-    // window.location.replace(`index.html?username=${registerData.username}`);
-    // window.location.replace(`index.html`);
+    window.location.replace(`login.html?email=${registrationData.email}`);
   }
 }
