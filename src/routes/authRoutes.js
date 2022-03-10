@@ -8,7 +8,7 @@ const { validateUser, validateToken } = require('../middleware');
 
 const authRoutes = express.Router();
 
-authRoutes.post('/register', authController);
+authRoutes.post('/register', validateUser, authController);
 authRoutes.post('/login', validateUser, loginController);
 authRoutes.get('/articles', validateToken, findAllArticles);
 
