@@ -1,13 +1,13 @@
 Susikuriame dvi lenteles:
 
-    users (id, email, password, reg_timestamp);
-    articles (id, date, title, content).
+   ++ users (id, email, password, reg_timestamp);
+  ++  articles (id, date, title, content).
 
 Susikuriame NodeJS serverį su:
 
-    Auth: POST register (išsaugo vartotojo duomenis į users lentelę);
-    Auth: POST login (patikrina vartotojo duomenis ir grąžina tokeną);
-    Content: GET articles (tik registruotiems vartotojams);
+   ++ Auth: POST register (išsaugo vartotojo duomenis į users lentelę);
+   ++ Auth: POST login (patikrina vartotojo duomenis ir grąžina tokeną);
+   ++ Content: GET articles (tik registruotiems vartotojams);
 
 Susikuriame Front-end‘o puslapius:
 

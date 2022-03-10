@@ -1,6 +1,10 @@
 const { failResponce, successResponce } = require('../dbHelpers');
 const { hashPass, verifyHash, generateJwtToken } = require('../helpers');
-const { addUserToDb, getUserFromDb } = require('../model/model');
+const {
+  addUserToDb,
+  getUserFromDb,
+  getAllArticlesFromDb,
+} = require('../model/model');
 
 async function authController(req, res) {
   const { email, password } = req.body;
@@ -24,7 +28,7 @@ async function loginController(req, res) {
 
   if (findResults === false) return failResponce(res, 'something went wrong');
   if (!findResults.length) return failResponce(res, 'email or pass not mach 1');
-  
+
   const foundUserObj = findResults[0];
 
   if (!verifyHash(password, foundUserObj)) {
@@ -37,7 +41,18 @@ async function loginController(req, res) {
   successResponce(res, token);
 }
 
+async function findAllArticles(req, res) {
+  const allArticles = await getAllArticlesFromDb();
+  if (allArticles === false) {
+    failResponce(res);
+    return;
+  }
+  // successResponce(res, 'All Articles found!');
+  res.json(allArticles);
+}
+
 module.exports = {
   authController,
   loginController,
+  findAllArticles,
 };
