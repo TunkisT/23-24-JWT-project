@@ -42,8 +42,21 @@ async function getAllArticlesFromDb() {
   }
 }
 
+async function countUsersFromDb() {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const sql = `SELECT COUNT(*) FROM users`;
+    const  [result]  = await connection.query(sql);
+    await connection.close();
+    return result;
+  } catch (error) {
+    console.log('countUsersFromDb ===', error);
+  }
+}
+
 module.exports = {
   addUserToDb,
   getUserFromDb,
   getAllArticlesFromDb,
+  countUsersFromDb,
 };

@@ -5,6 +5,7 @@ const {
   addUserToDb,
   getUserFromDb,
   getAllArticlesFromDb,
+  countUsersFromDb,
 } = require('../model/model');
 require('dotenv').config();
 
@@ -55,8 +56,18 @@ async function findAllArticles(req, res) {
   res.json(allArticles);
 }
 
+async function countUsers(req, res) {
+  const allUsersNumber = await countUsersFromDb();
+  if (allUsersNumber === false) {
+    failResponce(res);
+    return;
+  }
+  successResponce(res, allUsersNumber)
+}
+
 module.exports = {
   authController,
   loginController,
   findAllArticles,
+  countUsers,
 };
