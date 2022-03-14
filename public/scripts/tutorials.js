@@ -1,9 +1,7 @@
 const cardsDiv = document.querySelector('.cards');
 const token = localStorage.getItem('login_token');
 
-window.addEventListener('load', () => {
-  cardsDiv.innerHTML = ' LOADING...';
-});
+
 
 async function makeCards() {
   await fetch('http://localhost:3000/tutorials', {

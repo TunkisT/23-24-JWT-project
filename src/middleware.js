@@ -40,6 +40,7 @@ function validateToken(req, res, next) {
   const verifyResult = verifyJwtToken(tokenGotFromUser);
 
   if (verifyResult === false) return  failResponce(res, 'invalid token');
+  console.log('verifyResult ===', verifyResult);
   next();
 }
 

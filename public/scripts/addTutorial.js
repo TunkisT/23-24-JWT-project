@@ -24,15 +24,10 @@ async function postTutorial(tutorialData) {
   const respInJs = await resp.json();
   console.log('respInJs ===', respInJs);
 
-  if (respInJs.success === false) {
-    errorDiv.innerHTML = '';
-    respInJs.error.map((err) => {
-      console.log(err.message);
-      errorDiv.innerHTML += `<h5>${err.message}</h5>`;
-    });
-  }
-
   if (respInJs.success === true) {
     alert(respInJs.data);
+    return;
   }
+
+  alert('Please login');
 }

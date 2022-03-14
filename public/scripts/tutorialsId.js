@@ -1,28 +1,29 @@
 const cardsDiv = document.querySelector('.cards');
 const token = localStorage.getItem('login_token');
 
+
+
 async function makeCards() {
-  await fetch('http://localhost:3000/articles', {
+  await fetch('http://localhost:3000/user-tutorials/44', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   })
     .then((res) => res.json())
     .then((cards) => {
-      console.log('cards ===', cards);
       if (cards.success === false) {
         cardsDiv.innerHTML = 'SESSION TIMEOUT';
         return;
       }
       cardsDiv.innerHTML = '';
-      cards.map((card) => {
+      
+      cards.data.map((card) => {
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('card');
         cardsDiv.append(cardDiv);
         cardDiv.innerHTML = `
         <h2>Title: ${card.title}</h2>
         <p>${card.content}</p>
-        <h4>${card.date}</h4>
         `;
       });
     });
