@@ -35,7 +35,8 @@ Content-Type: application/json
 {
     "user_id": "43",
     "title": "TEST REST",
-    "content": "TEST REST BODY"
+    "content": "TEST REST BODY",
+    "private": "0"
 }
 
 ###

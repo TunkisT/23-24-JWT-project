@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"></head>
-    <script src="scripts/login.js" defer></script>
+    <script src="scripts/addTutorial.js" defer></script>
 </head>
 <body>
     <nav class="navigation">
@@ -14,13 +14,16 @@
         <button><a href="register.html">Register</a></button>
         <button><a href="login.html">Login</a></button>
         <button><a href="addTutorial.html">Add tutorial</a></button>
-
     </nav>
-    <h1>Login</h1>
-    <form id="login">
-        <input type="email" name="email" placeholder="email">
-        <input type="text" name="password" placeholder="password">
-        <button>Login</button>
+    <h1>Add tutorial</h1>
+    <form id="tutorial">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="content" placeholder="content">
+        <label for="show">Public</label>
+        <input type="radio" name="show" value="0" id="show">
+        <label for="show">Private</label>
+        <input type="radio" name="show" value="1" id="show"><br>
+        <button>ADD</button>
     </form>
     <div class="errors"></div>
     

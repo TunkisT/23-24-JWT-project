@@ -31,7 +31,7 @@ async function insertTutorial(req, res) {
     failResponce(res);
     return;
   }
-  successResponce(res, insert);
+  successResponce(res, 'Tutorial inserted!');
 }
 
 module.exports = {

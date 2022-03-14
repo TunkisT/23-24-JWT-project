@@ -28,9 +28,14 @@ async function getAllTutorialsFromDb() {
 async function insertTutorialToDb(data) {
   try {
     const connection = await mysql.createConnection(dbConfig);
-    const sql = `INSERT INTO tutorials (user_id, title, content) VALUES (?, ?, ?) `;
-    const { user_id, title, content } = data;
-    const [result] = await connection.execute(sql, [user_id, title, content]);
+    const sql = `INSERT INTO tutorials (user_id, title, content, private) VALUES (?, ?, ?, ?) `;
+    const { user_id, title, content, private } = data;
+    const [result] = await connection.execute(sql, [
+      user_id,
+      title,
+      content,
+      private,
+    ]);
     await connection.close();
     return result;
   } catch (error) {
