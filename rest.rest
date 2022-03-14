@@ -3,6 +3,8 @@ GET http://localhost:3000/articles
 GET http://localhost:3000/users
 ###
 GET http://localhost:3000/tutorials
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJpYXQiOjE2NDcyNjU2MDQsImV4cCI6MTY0NzI2OTIwNH0.4bH5cP9xEEBiZDvlOQXIT9rd2XNFue2PDy3uRSJzAps
+
 ###
 GET http://localhost:3000/user-tutorials/44
 ###

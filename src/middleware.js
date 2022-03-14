@@ -35,16 +35,30 @@ function validateToken(req, res, next) {
   const authHeaders = req.headers.authorization;
   const tokenGotFromUser = authHeaders && authHeaders.split(' ')[1];
 
-  if (!tokenGotFromUser) return res.status(401).json('token not found');
-
+  if (!tokenGotFromUser) return failResponce(res, 'no token', 401);
   const verifyResult = verifyJwtToken(tokenGotFromUser);
 
-  if (verifyResult === false) return  failResponce(res, 'invalid token');
+  if (verifyResult === false) return failResponce(res, 'invalid token', 403);
+  console.log('req.id ===', req.userId);
   console.log('verifyResult ===', verifyResult);
+  next();
+}
+
+function validateTokenAllTutorials(req, res, next) {
+  const authHeaders = req.headers.authorization;
+  const tokenGotFromUser = authHeaders && authHeaders.split(' ')[1];
+
+  if (!tokenGotFromUser) return next();
+  const verifyResult = verifyJwtToken(tokenGotFromUser);
+
+  if (verifyResult === false) return next();
+  // console.log('verifyResult ===', verifyResult);
+  req.validUser = true;
   next();
 }
 
 module.exports = {
   validateUser,
   validateToken,
+  validateTokenAllTutorials,
 };

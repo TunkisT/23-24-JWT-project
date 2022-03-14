@@ -3,6 +3,7 @@ const {
   getTutorialByUserIdFromDb,
   getAllTutorialsFromDb,
   insertTutorialToDb,
+  getAllPublicTutorialsFromDb,
 } = require('../model/tutorialModel');
 
 async function allUserTutorials(req, res) {
@@ -16,7 +17,17 @@ async function allUserTutorials(req, res) {
 }
 
 async function getAllTutorials(req, res) {
-  const allTutorials = await getAllTutorialsFromDb();
+  console.log('req.validUser ===', req.validUser);
+  let allTutorials;
+  if (req.validUser === true) {
+    console.log('visi tutorial');
+    allTutorials = await getAllTutorialsFromDb();
+    return
+  } else {
+    console.log('public tutorial');
+    allTutorials = await getAllPublicTutorialsFromDb()
+  }
+
   if (allTutorials === false) {
     failResponce(res);
     return;
@@ -37,5 +48,5 @@ async function insertTutorial(req, res) {
 module.exports = {
   allUserTutorials,
   getAllTutorials,
-  insertTutorial
+  insertTutorial,
 };

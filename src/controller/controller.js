@@ -31,6 +31,7 @@ async function loginController(req, res) {
   if (!findResults.length) return failResponce(res, 'email or pass not mach 1');
 
   const foundUserObj = findResults[0];
+  console.log('foundUserObj ===', foundUserObj);
 
   if (!verifyHash(password, foundUserObj)) {
     return failResponce(res, 'pass dont match');

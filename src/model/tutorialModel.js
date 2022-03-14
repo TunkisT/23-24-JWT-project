@@ -43,8 +43,21 @@ async function insertTutorialToDb(data) {
   }
 }
 
+async function getAllPublicTutorialsFromDb() {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const sql = `SELECT * FROM tutorials WHERE private = 0`;
+    const [result] = await connection.query(sql);
+    await connection.close();
+    return result;
+  } catch (error) {
+    console.log('getAllTutorialsFromDb===', error);
+  }
+}
+
 module.exports = {
   getTutorialByUserIdFromDb,
   getAllTutorialsFromDb,
   insertTutorialToDb,
+  getAllPublicTutorialsFromDb,
 };
