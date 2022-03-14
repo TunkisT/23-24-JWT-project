@@ -2,6 +2,8 @@ GET http://localhost:3000/articles
 ###
 GET http://localhost:3000/users
 ###
+GET http://localhost:3000/tutorials
+###
 GET http://localhost:3000/user-tutorials/44
 ###
 GET http://localhost:3000/articles
@@ -24,6 +26,16 @@ Content-Type: application/json
 {
     "email": "tom@email.com",
     "password": "1"
+}
+
+###
+POST http://localhost:3000/tutorials
+Content-Type: application/json
+
+{
+    "user_id": "43",
+    "title": "TEST REST",
+    "content": "TEST REST BODY"
 }
 
 ###

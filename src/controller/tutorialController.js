@@ -1,5 +1,9 @@
 const { successResponce, failResponce } = require('../dbHelpers');
-const { getTutorialByUserIdFromDb } = require('../model/tutorialModel');
+const {
+  getTutorialByUserIdFromDb,
+  getAllTutorialsFromDb,
+  insertTutorialToDb,
+} = require('../model/tutorialModel');
 
 async function allUserTutorials(req, res) {
   const { id } = req.params;
@@ -10,6 +14,28 @@ async function allUserTutorials(req, res) {
   }
   successResponce(res, userTutorial);
 }
+
+async function getAllTutorials(req, res) {
+  const allTutorials = await getAllTutorialsFromDb();
+  if (allTutorials === false) {
+    failResponce(res);
+    return;
+  }
+  successResponce(res, allTutorials);
+}
+
+async function insertTutorial(req, res) {
+  const data = req.body;
+  const insert = await insertTutorialToDb(data);
+  if (insert === false) {
+    failResponce(res);
+    return;
+  }
+  successResponce(res, insert);
+}
+
 module.exports = {
   allUserTutorials,
+  getAllTutorials,
+  insertTutorial
 };
