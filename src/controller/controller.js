@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken');
 const { failResponce, successResponce } = require('../dbHelpers');
 const { hashPass, verifyHash, generateJwtToken } = require('../helpers');
 const {
@@ -7,9 +6,6 @@ const {
   getAllArticlesFromDb,
   countUsersFromDb,
 } = require('../model/model');
-require('dotenv').config();
-
-const jwtSecret = process.env.JWT_TOKEN_SECRET;
 
 async function authController(req, res) {
   const { email, password } = req.body;
